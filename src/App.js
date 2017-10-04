@@ -1,32 +1,14 @@
 import React, { Component } from "react";
+
 import logo from "./logo.svg";
-import styled, { keyframes } from "styled-components";
+import { Wrapper, Input, Logo, Header, Title, Intro } from "./styles";
+import Navigation from './navigation';
 
-const Rotate = keyframes`
-from { transform: rotate(0deg); }
-to { transform: rotate(360deg); }
-`;
+const btns = Array.from({length: 6}, (_, i) => ({
+  label: `button ${i}`
+}))
 
-const Wrapper = styled.div`
-  text-align: center;
-  background-color: red;
-`;
-
-const Logo = styled.img`
-  animation: ${Rotate} infinite ${props => props.speed} linear;
-  height: 80px;
-`;
-
-const Header = styled.header`
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-`;
-
-const Title = styled.h1`font-size: 1.5em;`;
-
-const Intro = styled.p`font-size: large;`;
+console.log(btns)
 
 class App extends Component {
   render() {
@@ -36,6 +18,8 @@ class App extends Component {
           <Logo src={logo} alt="logo" speed="20s" />
           <Logo src={logo} alt="logo" speed="2s" />
           <Title>Welcome to React</Title>
+          <Navigation links={btns} />
+          <Input placeholder="Type here" error={true} />
         </Header>
         <Intro>
           To get started, edit <code>src/App.js</code> and save to reload.
